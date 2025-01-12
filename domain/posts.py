@@ -24,10 +24,10 @@ def make_request(method, endpoint, params=None, data=None, base_route="wp/v2"):
     Helper function to handle API requests.
     """
     # Clean the URL components to remove leading/trailing whitespaces and newlines
-    WP_URL = WP_URL.strip()
+    wp = WP_URL.strip()
     base_route = base_route.strip()
     endpoint = endpoint.strip()
-    url = f"{WP_URL}/{base_route}/{endpoint}"
+    url = f"{wp}/{base_route}/{endpoint}"
     # if method == "POST":
     #     HEADERS["Authorization"] = f"Basic {AUTH}"
     try:

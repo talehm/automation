@@ -27,8 +27,8 @@ def make_request(method, endpoint, params=None, data=None, base_route="wp/v2"):
     wp = WP_URL
     base_route = base_route.strip()
     endpoint = endpoint.strip()
-    USERNAME = USERNAME
-    PASSWORD = PASSWORD
+    username = USERNAME
+    password = PASSWORD
     url = f"{wp}/{base_route}/{endpoint}"
     print(url)
     # if method == "POST":
@@ -40,7 +40,7 @@ def make_request(method, endpoint, params=None, data=None, base_route="wp/v2"):
             headers=HEADERS,
             params=params,
             data=json.dumps(data) if data else None,
-            auth=HTTPBasicAuth(USERNAME, PASSWORD),
+            auth=HTTPBasicAuth(username, password),
         )
         response.raise_for_status()
         return response.json()

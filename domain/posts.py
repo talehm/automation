@@ -37,7 +37,7 @@ def make_request(method, endpoint, params=None, data=None, base_route="wp/v2"):
             headers=HEADERS,
             params=params,
             data=json.dumps(data) if data else None,
-            auth=HTTPBasicAuth(USERNAME, PASSWORD),
+            auth=HTTPBasicAuth(USERNAME.strip(), PASSWORD.strip()),
         )
         response.raise_for_status()
         return response.json()

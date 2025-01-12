@@ -115,6 +115,7 @@ def run(post_type, post_id, soc, count):
         remaining_limit = limit - count
         if remaining_limit <= 0:
             print(f"Limit reached for {connection}. Skipping...")
+            time.sleep(3)
         else:
             if item == None:
                 return

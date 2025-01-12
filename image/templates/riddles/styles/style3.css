@@ -1,0 +1,11 @@
+:root {
+	--background-color: #686b31;
+	--line-color: #ffb96b;
+	--text-color: #ebe9e3;
+}
+
+#main {
+
+	background: url(../download_3.png) left top repeat;
+
+}

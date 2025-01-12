@@ -1,0 +1,5 @@
+curl --location 'https://trueandfiction.com/wp-json/jetpack/v4/publicize/5339?_locale=user' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Basic xxxx' \
+--header 'Cookie: __cf_bm=ZBXnvEu_NmWEVvNJg5GZK8BAKV6psvWtcDJuQmByUK8-1736085546-1.0.1.1-1HkWoxv8vmff0hGQYaLI6bubnOGJRK5NKW6kpq0_9Yh1oJ_uqiE3QSmsTPii0RoiI1yprwAj2qoEoRYIlcU0SA; _cfuvid=J1TvDJaSj6LPfgjpwYsued3l9m6Es7ES2xN3XSbHtjA-1736002160941-0.0.1.1-604800000' \
+--data '{"message":"a military court for trying people charged with minor offenses in an occupied area","skipped_connections":["25490838","25490839"],"async":true}'

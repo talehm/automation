@@ -1,0 +1,6 @@
+Flask
+requests
+python-dotenv
+beautifulsoup4
+Pillow
+selenium

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Background Image Template</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+		}
+
+		.background {
+			margin: 0;
+			width: 1000px;
+			height: 1500px;
+			background: url('fdfdfd.jpeg') left top repeat;
+			background-size: cover;
+			/* Cover the entire area */
+			background-position: center;
+			/* Center the image */
+			display: flex;
+			align-items: start;
+			justify-content: center;
+			position: fixed;
+			opacity: 0.5;
+			top: 0;
+		}
+
+		#main {
+			margin: 0;
+			width: 1000px;
+			height: 1500px;
+			/* background:  url('fdfdfd.jpeg') left top repeat; */
+			background-size: cover;
+			/* Cover the entire area */
+			background-position: center;
+			/* Center the image */
+			display: flex;
+			align-items: start;
+			justify-content: center;
+			position: fixed;
+			opacity: 0.5;
+			top: 0;
+		}
+
+		.content {
+			background: url('dark.png') center center / cover no-repeat;
+			font-size: 60px;
+			position: absolute;
+			z-index: 2;
+			width: 1000px;
+			height: 1500px;
+			margin-top: 0;
+		}
+
+		#title {
+			padding-top: 200px;
+		}
+
+		#title,
+		#paragraph {
+			padding-left: 115px;
+			padding-right: 115px;
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<div class="background"></div>
+	<div id="main"></div>
+	<div class="content">
+		<h1 id="title" style="color: black; text-align: center; ">The Mysterious Disappearance of the Ancient City</h1>
+		<span id="paragraph" style="color: black; text-align: center;">Young Leo and Maria discover a hidden map leading
+			to the Lost City of Eldoria. They face tests of valor, wisdom, and compassion, ultimately proving their
+			worth and unlocking the path to the ancient city.... </span>
+	</div>
+	<script>
+		function fitText() {
+			const container = document.getElementById('content');
+			const text = document.getElementById('title');
+
+			let fontSize = 100; // Start with a large font size
+			text.style.fontSize = fontSize + 'px';
+
+			// Reduce font size until text fits in the container
+			while (text.offsetWidth > container.offsetWidth || text.offsetHeight > container.offsetHeight) {
+				fontSize -= 1;
+				text.style.fontSize = fontSize + 'px';
+			}
+		}
+
+		// Run fitText on load
+		window.onload = fitText;
+		// Optionally, you can also run it on window resize
+		window.onresize = fitText;
+	</script>
+</body>
+</html>

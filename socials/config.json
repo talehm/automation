@@ -1,0 +1,5 @@
+[{"connection":"instagram","id":"25490838","limit":50},
+{"connection":"facebook","id":"25490839","limit":35},
+{"connection":"bluesky","id":"25490844","limit":100},
+{"connection":"tumblr","id":"25491586","limit":250},
+{"connection":"threads","id":"25491600","limit":20}]

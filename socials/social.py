@@ -69,7 +69,8 @@ def generate_message(item, social):
             )
         if social == "threads":
             message = (
-                word
+                "https://www.pngall.com/wp-content/uploads/8/Sample.png"
+                + word
                 + "\n- "
                 + brief[0].capitalize()
                 + "\n\n"

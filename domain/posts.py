@@ -8,6 +8,7 @@ import re
 import csv
 from dotenv import load_dotenv
 
+utils.load_dotenv()
 
 # Global variables
 WP_URL = get_env_var("WP_URL")

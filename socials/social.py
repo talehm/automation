@@ -111,7 +111,6 @@ def run(post_type, post_id, soc, count):
         return  # You can return here to skip processing this post
     # Check how many more posts can be made
     else:
-        print(soc, post_id)
         item = posts.fetch_by_id(post_type, post_id)
         remaining_limit = limit - count
         if remaining_limit <= 0:

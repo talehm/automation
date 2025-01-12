@@ -49,7 +49,7 @@ def generate_message(item, social):
                 + "\n- "
                 + brief[0].capitalize()
                 + "\n\n"
-                + "Learn More... \n\n\n#definition"
+                + f"Learn More... \n\n\n#definition #{word.replace(' ', '')} #meaning #english #ielts"
             )
         if social == "facebook":
             message = (
@@ -74,7 +74,7 @@ def generate_message(item, social):
                 + "\n- "
                 + brief[0].capitalize()
                 + "\n\n"
-                + f"Learn More... \n\n\n#definition #{word.replace(' ', '')} #meaning #english #ielts"
+                + f"Learn More... \n\n\n #{word.replace(' ', '')} "
             )
     return message
 
@@ -87,6 +87,7 @@ def post(item, connection_id):
         "message": message,
         "skipped_connections": skipped_connections,
         "async": True,
+        "featured_image":
     }
     # API_URL = f"https://trueandfiction.com/wp-json/jetpack/v4/publicize/{item['id']}?_locale=user"
     response = posts.make_request(

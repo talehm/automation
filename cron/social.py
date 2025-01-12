@@ -1,7 +1,7 @@
 import argparse
 import sys
 import os
-
+import time
 
 current_dir = os.path.dirname(__file__)
 # Move one folder up
@@ -10,6 +10,7 @@ sys.path.append(parent_dir)
 # print(os.path.abspath(os.path.join(os.path.dirname(__file__))))
 from socials import social
 import utils
+import random
 
 
 def post_on_social(post_type, soc):
@@ -24,6 +25,10 @@ def post_on_social(post_type, soc):
 
 
 if __name__ == "__main__":
+    # Generate a random sleep duration between 180 and 240 seconds (3 to 4 minutes)
+    random_sleep = random.randint(60, 240)
+
+    time.sleep(random_sleep)
     parser = argparse.ArgumentParser(
         description="Post on social media using definitions and IDs."
     )

@@ -6,6 +6,8 @@ from helpers import post_handler
 import utils
 import re
 import csv
+from dotenv import load_dotenv
+
 
 # Global variables
 WP_URL = get_env_var("WP_URL")
@@ -24,6 +26,7 @@ def make_request(method, endpoint, params=None, data=None, base_route="wp/v2"):
     Helper function to handle API requests.
     """
     # Clean the URL components to remove leading/trailing whitespaces and newlines
+    WP_URL = get_env_var("WP_URL")
     wp = WP_URL
     base_route = base_route.strip()
     endpoint = endpoint.strip()

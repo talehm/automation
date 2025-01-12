@@ -1,10 +1,7 @@
 import argparse
 import sys
 import os
-from utils import load_env_vars
 
-
-load_env_vars()
 
 current_dir = os.path.dirname(__file__)
 # Move one folder up
@@ -13,6 +10,7 @@ sys.path.append(parent_dir)
 # print(os.path.abspath(os.path.join(os.path.dirname(__file__))))
 from socials import social
 import utils
+utils.load_env_vars()
 
 
 def post_on_social(post_type, soc):

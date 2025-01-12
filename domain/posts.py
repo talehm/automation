@@ -6,7 +6,6 @@ from helpers import post_handler
 import utils
 import re
 import csv
-from dotenv import load_dotenv
 
 utils.load_dotenv()
 

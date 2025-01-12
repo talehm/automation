@@ -10,7 +10,6 @@ sys.path.append(parent_dir)
 # print(os.path.abspath(os.path.join(os.path.dirname(__file__))))
 from socials import social
 import utils
-utils.load_env_vars()
 
 
 def post_on_social(post_type, soc):

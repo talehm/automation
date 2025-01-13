@@ -87,7 +87,7 @@ def post(item, connection_id):
         "message": message,
         "skipped_connections": skipped_connections,
         "async": True,
-        "featured_image":
+        "featured_image": "dfd",
     }
     # API_URL = f"https://trueandfiction.com/wp-json/jetpack/v4/publicize/{item['id']}?_locale=user"
     response = posts.make_request(

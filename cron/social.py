@@ -7,15 +7,17 @@ current_dir = os.path.dirname(__file__)
 # Move one folder up
 parent_dir = os.path.abspath(os.path.join(current_dir, ".."))
 sys.path.append(parent_dir)
-# print(os.path.abspath(os.path.join(os.path.dirname(__file__))))
 from socials import social
 import utils
 import random
 
 
 def post_on_social(post_type, soc):
-    definitions = utils.load_from_json("data/definitions.json")
-    ids = utils.load_from_json(f"socials/{soc}_ids.json")
+    data_file_path = os.path.join(parent_dir, "data", "definitions.json")
+    logs_file_path = os.path.join(parent_dir, "socials", f"{soc}_ids.json")
+
+    definitions = utils.load_from_json(data_file_path)
+    ids = utils.load_from_json(logs_file_path)
     count = 1
     for definition in definitions:
         if definition["id"] not in ids:
@@ -39,4 +41,3 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     result = post_on_social(args.post_type, args.soc)
-    print(result)

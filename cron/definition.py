@@ -47,7 +47,7 @@ def post_on_social(post_type, limit):
             db.set_as_published(id)
             print(f"created: {post_id} : {title}")
             random_sleep = random.randint(60, 240)
-            time.sleep(random_sleep)
+            time.sleep(5)
     return "Stopped"
 
 

@@ -13,6 +13,40 @@ class PinService:
             "Accept": "application/json",
         }
 
+    def create_pin_from_db(
+        self,
+        link: str,
+        title: str,
+        description: str,
+        media_url: str,
+        board_id: str,
+        alt_text: str,
+        keywords: Optional[str] = None,
+        section_id: Optional[str] = None,
+    ) -> bool:
+        try:
+            data = {
+                "board_id": str(board_id),
+                "title": title,
+                "alt_text": alt_text,
+                "description": description,
+                "media_source": {
+                    "source_type": "image_url",
+                    "url": media_url,
+                },
+                "link": link,
+            }
+            if section_id:
+                data["board_section_id"] = section_id
+
+            response = requests.post(
+                f"{self.base_url}/pins", headers=self.headers, json=data
+            )
+            return response.status_code == 201
+        except Exception as e:
+            print(f"Error creating pin: {str(e)}")
+            return False
+
     def create_pin(
         self,
         post: Dict,

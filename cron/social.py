@@ -28,9 +28,9 @@ def post_on_social(post_type, soc):
 
 if __name__ == "__main__":
     # Generate a random sleep duration between 180 and 240 seconds (3 to 4 minutes)
-    random_sleep = random.randint(60, 240)
+    # random_sleep = random.randint(60, 240)
 
-    time.sleep(random_sleep)
+    # time.sleep(random_sleep)
     parser = argparse.ArgumentParser(
         description="Post on social media using definitions and IDs."
     )

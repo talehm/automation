@@ -118,6 +118,7 @@ def run(post_type, post_id, soc, count):
         if remaining_limit <= 0:
             print(f"Limit reached for {connection}. Skipping...")
             time.sleep(3)
+            return False
         else:
             if item == None:
                 return
@@ -125,8 +126,9 @@ def run(post_type, post_id, soc, count):
             response = post(item, connection_id)
             posted_ids.append(item["id"])
             save_posted_ids(file_name, posted_ids)
-            delay = random.randint(1200, 1800)
+            delay = random.randint(180, 360)
             time.sleep(delay)
+            return True
 
 
 # # Process each social connection

@@ -3,6 +3,7 @@ import time
 import random
 import requests
 from domain import posts
+import os
 
 # API configuration
 HEADERS = {
@@ -105,7 +106,11 @@ def run(post_type, post_id, soc, count):
     connection = [social for social in SOCIAL_CONFIG if social["connection"] == soc][0]
     connection_id = connection["id"]
     limit = connection["limit"]
-    file_name = f"socials/{soc}_ids.json"
+    current_dir = os.path.dirname(__file__)
+    # Move one folder up
+    parent_dir = os.path.abspath(os.path.join(current_dir, ".."))
+    file_name = os.path.join(parent_dir, "socials", f"{soc}_ids.json")
+
     posted_ids = load_posted_ids(file_name)
     # Skip already posted social IDs
     if post_id in posted_ids:

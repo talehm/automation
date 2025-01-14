@@ -4,6 +4,7 @@ import random
 import requests
 from domain import posts
 import os
+from definitions import ExecutionStatus
 
 # API configuration
 HEADERS = {
@@ -115,7 +116,9 @@ def run(post_type, post_id, soc, count):
     # Skip already posted social IDs
     if post_id in posted_ids:
         print(f"Post ID {post_id} already exists. Skipping...")
-        return  # You can return here to skip processing this post
+        return (
+            ExecutionStatus.ALREADY_EXISTS
+        )  # You can return here to skip processing this post
     # Check how many more posts can be made
     else:
         item = posts.fetch_by_id(post_type, post_id)
@@ -123,7 +126,7 @@ def run(post_type, post_id, soc, count):
         if remaining_limit <= 0:
             print(f"Limit reached for {connection}. Skipping...")
             time.sleep(3)
-            return False
+            return ExecutionStatus.LIMIT_EXCEEDED
         else:
             if item == None:
                 return
@@ -133,7 +136,7 @@ def run(post_type, post_id, soc, count):
             save_posted_ids(file_name, posted_ids)
             delay = random.randint(180, 360)
             time.sleep(delay)
-            return True
+            return ExecutionStatus.SUCCESS
 
 
 # # Process each social connection

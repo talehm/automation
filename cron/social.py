@@ -7,6 +7,7 @@ current_dir = os.path.dirname(__file__)
 # Move one folder up
 parent_dir = os.path.abspath(os.path.join(current_dir, ".."))
 sys.path.append(parent_dir)
+from definitions import ExecutionStatus
 from socials import social
 import utils
 import random
@@ -21,8 +22,9 @@ def post_on_social(post_type, soc):
     count = 1
     for definition in definitions:
         if definition["id"] not in ids:
-            social.run(post_type, definition["id"], soc, count)
-            count += 1
+            status = social.run(post_type, definition["id"], soc, count)
+            if status == ExecutionStatus.SUCCESS:
+                count += 1
     return "Stopped"
 
 

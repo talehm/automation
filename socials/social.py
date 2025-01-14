@@ -133,7 +133,7 @@ def run(post_type, post_id, soc, count):
             response = post(item, connection_id)
             posted_ids.append(item["id"])
             save_posted_ids(file_name, posted_ids)
-            delay = random.randint(180, 360)
+            delay = random.randint(240, 480)
             time.sleep(delay)
             return ExecutionStatus.SUCCESS
 

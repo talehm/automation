@@ -2,7 +2,6 @@ import requests
 import base64
 from flask import session
 from .config import CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, AUTH_URL, TOKEN_URL
-from utils import load_env_vars, save_tokens_to_env, get_env_var
 
 
 def get_pinterest_auth_url():

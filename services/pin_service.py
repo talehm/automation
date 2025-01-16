@@ -1,12 +1,14 @@
 import requests
-from utils import get_env_var
+# from utils_old import get_env_var
+from utils.env_manager import EnvManager
+from utils.file_handler import JsonFileHandler
 from typing import Dict, List, Optional
 
 
 class PinService:
     def __init__(self):
         self.base_url = "https://api.pinterest.com/v5"
-        self.access_token = get_env_var("ACCESS_TOKEN")
+        self.access_token = EnvManager.get_env_var("ACCESS_TOKEN")
         self.headers = {
             "Authorization": f"Bearer {self.access_token}",
             "Content-Type": "application/json",
@@ -83,7 +85,7 @@ class PinService:
             return response.json()
         return {"error": f"Error: {response.status_code} - {response.text}"}
 
-    def fetch_pins_from_board(self, board_id: str, section_id: str) -> str:
+    def fetch_pins_from_board(self, board_id: str, section_id: str = None) -> str:
         if section_id is None:
             url = f"{self.base_url}/boards/{board_id}/pins"
         else:
@@ -107,5 +109,7 @@ class PinService:
             else:
                 print(f"Failed to fetch pins: {response.status_code} - {response.text}")
                 break
-
+        file_handler = JsonFileHandler("data/pins.json")
+        file_handler.write(all_pins)
+        print(f"Fetched {len(all_pins)} pins and saved to data/pins.json")
         return "Done"

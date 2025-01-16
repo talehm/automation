@@ -7,23 +7,26 @@ current_dir = os.path.dirname(__file__)
 # Move one folder up
 parent_dir = os.path.abspath(os.path.join(current_dir, ".."))
 sys.path.append(parent_dir)
-from definitions import ExecutionStatus
-from socials import social
-import utils
+from enums import ExecutionStatus
+import social_media
+
+# from socials import social
+from utils.file_handler import JsonFileHandler
 import random
 
 
 def post_on_social(post_type, soc):
     data_file_path = os.path.join(parent_dir, "data", "definitions.json")
-    logs_file_path = os.path.join(parent_dir, "socials", f"{soc}_ids.json")
+    logs_file_path = os.path.join(parent_dir, "social_media/data", f"{soc}_ids.json")
+    definitions = JsonFileHandler(data_file_path).read()
+    ids = JsonFileHandler(logs_file_path).read()
 
-    definitions = utils.load_from_json(data_file_path)
-    ids = utils.load_from_json(logs_file_path)
     count = 1
     for definition in definitions:
         if definition["id"] not in ids:
-            status = social.run(post_type, definition["id"], soc, count)
+            status = social_media.run(post_type, definition["id"], soc, count)
             if status == ExecutionStatus.SUCCESS:
+                print(f"created: {definition["id"]} : {definition["title"]}")
                 count += 1
     return "Stopped"
 

@@ -1,6 +1,5 @@
 from flask import Blueprint, jsonify, request
 
-# from services.pin_service import get_boards_for_user
 
 boards_bp = Blueprint("boards", __name__)
 

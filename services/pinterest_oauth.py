@@ -8,8 +8,8 @@ import requests
 from typing import Optional, Dict, Any
 from dataclasses import dataclass
 from flask import session
-from utils import get_env_var, save_tokens_to_env
-
+from utils_old import get_env_var, save_tokens_to_env
+from utils.env_manager import EnvManager
 
 @dataclass
 class OAuthConfig:
@@ -29,9 +29,9 @@ class PinterestOAuthService:
     def __init__(self):
         """Initialize the OAuth service with configuration from environment variables"""
         self.config = OAuthConfig(
-            client_id=get_env_var("PINTEREST_CLIENT_ID"),
-            client_secret=get_env_var("PINTEREST_CLIENT_SECRET"),
-            redirect_uri=get_env_var("PINTEREST_REDIRECT_URI"),
+            client_id=EnvManager.get_env_var("PINTEREST_CLIENT_ID"),
+            client_secret=EnvManager.get_env_var("PINTEREST_CLIENT_SECRET"),
+            redirect_uri=EnvManager.get_env_var("PINTEREST_REDIRECT_URI"),
         )
 
     def get_auth_url(self) -> str:
@@ -78,7 +78,7 @@ class PinterestOAuthService:
 
             if response.status_code == 200:
                 tokens = response.json()
-                save_tokens_to_env(tokens)
+                EnvManager.save_tokens(tokens)
                 return tokens
 
             return None
@@ -93,7 +93,7 @@ class PinterestOAuthService:
         """Refresh the access token using a refresh token"""
         try:
             if not refresh_token:
-                refresh_token = get_env_var("REFRESH_TOKEN")
+                refresh_token = EnvManager.get_env_var("REFRESH_TOKEN")
 
             if not refresh_token:
                 print("Error: No refresh token available.")

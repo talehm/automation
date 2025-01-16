@@ -17,6 +17,7 @@ class IndexNowClient:
         self.base_url = base_url
 
     def get_daily_quota(self) -> int:
+        EnvManager.load_env_vars()
         route = "pox/GetUrlSubmissionQuota"
         site_url = EnvManager.get_env_var("SITE_URL")
         endpoint = f"{self.base_url}/{route}?apiKey={self.api_key}&siteUrl={site_url}"

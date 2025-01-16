@@ -12,6 +12,7 @@ class IndexNowClient:
         self,
         base_url: str = "https://ssl.bing.com/webmaster/api.svc",
     ):
+        EnvManager.load_env_vars()
         self.api_key = EnvManager.get_env_var("BING_API_KEY")
         self.base_url = base_url
 

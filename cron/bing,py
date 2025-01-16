@@ -1,4 +1,0 @@
-from routes.indexing import submit_urls
-
-if __name__ == "__main__":
-    submit_urls()

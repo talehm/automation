@@ -10,8 +10,7 @@ parent_dir = os.path.abspath(os.path.join(current_dir, ".."))
 sys.path.append(parent_dir)
 from db.pinterest import PinterestLinkDatabase
 from services.pin_service import PinService
-from socials import social
-import utils
+import utils_old
 import random
 
 

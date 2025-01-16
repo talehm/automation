@@ -51,7 +51,6 @@ class IndexNowClient:
 
         site_url = EnvManager.get_env_var("SITE_URL")
         payload = {"siteUrl": site_url, "urlList": url_list}
-        print(payload)
         headers = {"Content-Type": "application/json"}
         endpoint = f"{self.base_url}/json/SubmitUrlBatch?apiKey={self.api_key}"
 
